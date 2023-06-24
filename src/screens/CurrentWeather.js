@@ -46,7 +46,7 @@ const CurrentWeather = () => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: 'pink'
+    backgroundColor: 'tan'
   },
   container: {
     flex: 1,

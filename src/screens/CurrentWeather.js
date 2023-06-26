@@ -45,14 +45,14 @@ const CurrentWeather = () => {
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    backgroundColor: 'tan'
-  },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  wrapper: {
+    flex: 1,
+    backgroundColor: 'tan'
   },
   temp: {
     color: 'black',

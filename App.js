@@ -8,19 +8,19 @@ import { useGetWweather } from "./src/hooks/useGetWeather"
 const App = () => {
   const [isLoading, error, weather] = useGetWweather()
   console.log(isLoading, error, weather)
-  
-  if (isLoading) {
+
+  if (weather && weather.list) {
     return (
-      <View style={styles.container}>
-        <ActivityIndicator size={'large'} color={'blue'} />
-      </View>
+      <NavigationContainer>
+        <Tabs weather={weather} />
+      </NavigationContainer>
     )
   }
 
   return (
-    <NavigationContainer>
-      <Tabs />
-    </NavigationContainer>
+    <View style={styles.container}>
+      <ActivityIndicator size={'large'} color={'blue'} />
+    </View>
   )
 }
 

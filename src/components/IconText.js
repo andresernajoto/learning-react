@@ -8,7 +8,7 @@ const IconText = (props) => {
     const { container, textTheme } = styles
     return (
         <View style={container}>
-            <Feather name={iconName} size={24} color={iconColor} />
+            <Feather name={iconName} size={35} color={iconColor} />
             <Text style={[textTheme, bodyTextStyles]}>{bodyText}</Text>
         </View>
     )

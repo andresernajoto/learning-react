@@ -2,8 +2,9 @@ import React from 'react'
 import { SafeAreaView, Text, StyleSheet, ImageBackground, View } from "react-native";
 
 import IconText from "../components/IconText";
+import moment from 'moment';
 
-const City = () => {  
+const City = ({ weatherData }) => {  
     const { container,
             backgroundImage,
             cityName,
@@ -15,6 +16,8 @@ const City = () => {
             riseSetText,
             rowLayout } = styles
     
+    const { country, name, population, sunrise, sunset } = weatherData
+    
     return (
         <SafeAreaView style={container}>
             <ImageBackground
@@ -22,14 +25,14 @@ const City = () => {
                 style={backgroundImage} >
 
                 <View style={styles.textColor}>
-                    <Text style={[cityName, cityText]}>London</Text>
-                    <Text style={[countryName, cityText]}>UK</Text>
+                    <Text style={[cityName, cityText]}>{name}</Text>
+                    <Text style={[countryName, cityText]}>{country}</Text>
 
                     <View style={[populationWrapper, rowLayout]}>
                         <IconText
                             iconName={'user'} 
                             iconColor={'gold'} 
-                            bodyText={'8000'} 
+                            bodyText={`Population: ${population}`} 
                             bodyTextStyles={populationText}
                         />
                     </View>
@@ -38,14 +41,14 @@ const City = () => {
                         <IconText
                             iconName={'sunrise'} 
                             iconColor={'white'} 
-                            bodyText={'10:46:58am'}
+                            bodyText={moment(sunrise).format('LTS')}
                             bodyTextStyles={riseSetText}
                         />
                         
                         <IconText
                             iconName={'sunset'} 
                             iconColor={'white'} 
-                            bodyText={'17:28:15pm'}
+                            bodyText={moment(sunset).format('LTS')}
                             bodyTextStyles={riseSetText}
                         />
                     </View>
@@ -76,6 +79,7 @@ const styles = StyleSheet.create({
     },
     populationWrapper: {
         justifyContent: 'center',
+
         marginTop: 30
     },
     populationText: {

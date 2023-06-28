@@ -1,4 +1,4 @@
- # learning-react
+ # learning-react-native
  <em>Learning React from FreeCodeCamp YouTube Classes</em>
 
 ## Proposta do projeto

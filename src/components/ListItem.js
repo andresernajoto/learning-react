@@ -12,10 +12,12 @@ const ListItem = (props) => {
     return (
         <View style={item}>
             <Feather name={weatherType[condition].icon} size={50} color={'white'} />
+            
             <View styles={dateTextWrapper}>
                 <Text style={date}>{moment(dt_text).format('dddd')}</Text>
                 <Text style={date}>{moment(dt_text).format('LTS')}</Text>
             </View>
+            
             <Text style={temp}>{`${Math.round(min)}°C | ${Math.round(max)}°C`}</Text>
         </View>
     )

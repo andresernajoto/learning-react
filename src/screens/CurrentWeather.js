@@ -14,19 +14,20 @@ const CurrentWeather = ({ weatherData }) => {
           highLow,
           bodyWrapper,
           description,
-          message } = styles
+          message,
+          descText } = styles
   
   const {
     main: { temp, feels_like, temp_max, temp_min },
     weather
   } = weatherData
 
-  const weatherCondition = weather[0].main
+  const weatherCondition = weather[0]?.main
   
   return (
-    <SafeAreaView style={[wrapper, { backgroundColor: weatherType[weatherCondition].backgroundColor }]}>
+    <SafeAreaView style={[wrapper, { backgroundColor: weatherType[weatherCondition]?.backgroundColor }]}>
       <View style={container}>
-        <Feather name={weatherType[weatherCondition].icon} size={100} color="black" />
+        <Feather name={weatherType[weatherCondition]?.icon} size={100} color="black" />
 
         <Text style={tempStyles}>{`${temp}°C`}</Text>
         <Text style={feels}>{`Feels like: ${feels_like}°C`}</Text>
@@ -40,13 +41,16 @@ const CurrentWeather = ({ weatherData }) => {
         />
       </View>
 
-      <RowText
-        messageOne={weather[0].description}
-        messageTwo={weatherType[weatherCondition].message}
-        containerStyles={bodyWrapper}
-        messageOneStyles={description}
-        messageTwoStyles={message}
-      />
+      <View style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', }}>
+        <RowText
+          messageOne={weather[0]?.description}
+          messageTwo={weatherType[weatherCondition]?.message}
+          containerStyles={bodyWrapper}
+          messageOneStyles={description}
+          messageTwoStyles={message}
+        />
+      </View>
+      
     </SafeAreaView>
   )
 }
@@ -58,8 +62,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   wrapper: {
-    flex: 1,
-    backgroundColor: 'tan'
+    flex: 1
   },
   tempStyles: {
     color: 'black',
@@ -77,17 +80,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   bodyWrapper: {
-    justifyContent: 'flex-end',
-    alignItems: 'flex-start',
-    paddingLeft: 25,
-    marginBottom: 40
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 12,
   },
   description: {
-    fontSize: 48
+    fontSize: 35,
+    color: 'white',    
   },
   message: {
-    fontSize: 30
-  }
+    fontSize: 20,
+    color: 'white'
+  },
 })
 
 export default CurrentWeather

@@ -66,9 +66,11 @@ const styles = StyleSheet.create({
         flex: 1
     },
     cityName: {
-        fontSize: 40
+        fontSize: 40,
+        textAlign: 'center'
     },
     countryName: {
+        marginTop: 6,
         fontSize: 30
     },
     cityText: {
@@ -79,7 +81,6 @@ const styles = StyleSheet.create({
     },
     populationWrapper: {
         justifyContent: 'center',
-
         marginTop: 30
     },
     populationText: {
@@ -89,14 +90,14 @@ const styles = StyleSheet.create({
     },
     riseSetWrapper: {
         justifyContent: 'space-around',
-        marginTop: 15
+        marginTop: 30
     },
     riseSetText: {
         fontSize: 20,
         color: 'white'
     },
     textColor: {
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
         padding: 20
     },
     rowLayout: {

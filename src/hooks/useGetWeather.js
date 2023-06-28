@@ -11,35 +11,35 @@ export const useGetWweather = () => {
     const [lon, setLon] = useState([])
 
     const fetchWeatherData = async () => {
-        try {
-          const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`)
-          const data = await res.json()
+      try {
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`)
+        const data = await res.json()
           
-          setWeather(data)
-        } catch (e) {
-          setError('Could not fetch weather')
-        } finally {
-          setIsLoading(false)
-        }
+        setWeather(data)
+      } catch (e) {
+        setError('Could not fetch weather')
+      } finally {
+        setIsLoading(false)
+      }
     }
-      
+    
     useEffect(() => {
-        (async () => {
-            let { status } = await Location.requestForegroundPermissionsAsync()
-            
-            if (status !== 'granted') {
-                setError('Permission to access location was denied!')
-            
-                return
-            }
+      (async () => {
+        let { status } = await Location.requestForegroundPermissionsAsync()
+        
+        if (status !== 'granted') {
+          setError('Permission to access location was denied!')
+          
+          return
+        }
     
-            let location = await Location.getCurrentPositionAsync({})
-            setLat(location.coords.latitude)
-            setLon(location.coords.longitude)
-    
-            await fetchWeatherData()
-        })() // this parenthesis immediately invocs the effect
-    }, [lat, lon])
+        let location = await Location.getCurrentPositionAsync({})
+        setLat(location.coords.latitude)
+        setLon(location.coords.longitude)
 
-    return [isLoading, error, weather]
+        await fetchWeatherData()
+    })() // this parenthesis immediately invocs the effect
+  }, [lat, lon])
+
+  return [isLoading, error, weather]
 }

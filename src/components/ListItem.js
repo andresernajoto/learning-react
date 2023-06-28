@@ -6,16 +6,16 @@ import { weatherType } from "../utilities/weatherType"
 import moment from "moment"
 
 const ListItem = (props) => {
-    const { dt_text, min, max, condition } = props
+    const { dt_txt, min, max, condition } = props
     const { item, date, temp, dateTextWrapper } = styles // using styles without doing 'styles.blablabla'
 
     return (
         <View style={item}>
-            <Feather name={weatherType[condition].icon} size={50} color={'white'} />
+            <Feather name={weatherType[condition]?.icon} size={50} color={'white'} />
             
             <View styles={dateTextWrapper}>
-                <Text style={date}>{moment(dt_text).format('dddd')}</Text>
-                <Text style={date}>{moment(dt_text).format('LTS')}</Text>
+                <Text style={date}>{moment(dt_txt).format('dddd')}</Text>
+                <Text style={date}>{moment(dt_txt).format('LTS')}</Text>
             </View>
             
             <Text style={temp}>{`${Math.round(min)}°C | ${Math.round(max)}°C`}</Text>
